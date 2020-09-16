@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Students Results</title>
+</head>
+<body>
+        <table class="table table-dark table-hover">
+            <tr>
+                <th colspan="4">Student result Board</th>
+            </tr>
+            <tr>
+                <th>Student Name</th>
+                <th>Roll Number</th>
+                <th>Total Marks</th>
+                <th>Status</th>
+            </tr>
+            {% for data in dataset %}
+            <tr>
+                  {% if data[3] == 'Topper' %}
+                        <td style="color:green">{{ data[0] }}</td>
+                        <td style="color:green">{{ data[1] }}</td>
+                        <td style="color:green">{{ data[2] }}</td>
+                        <td style="color:green">{{ data[3] }}</td>
+                  {% endif %}
+                  {% if data[3] == 'Pass' %}
+                        <td>{{ data[0] }}</td>
+                        <td>{{ data[1] }}</td>
+                        <td>{{ data[2] }}</td>
+                        <td>{{ data[3] }}</td>
+                  {% endif %}
+                  {% if data[3] == 'Fail' %}
+                        <td style="color:red">{{ data[0] }}</td>
+                        <td style="color:red">{{ data[1] }}</td>
+                        <td style="color:red">{{ data[2] }}</td>
+                        <td style="color:red">{{ data[3] }}</td>
+                  {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
