@@ -45,21 +45,27 @@ class Employee{
 public class Assignment {
     Employee[] E;
     public void merge(Person[] p,Role[] r){
-        E = new Employee[p.length];
         Map<String,String> hm = new HashMap<>();
         for(Role i:r){
             hm.put(i.role,i.designation);
         }
         int k = 0;
-        for(Person i:p){
-            Employee tmp = new Employee(i.name,i.age);
-            tmp.setrole(i.role);
-            tmp.setdesignation(hm.get(i.role));
-            E[k++] = tmp;
+        E = new Employee[p.length];
+        for(int i=0;i<p.length;i++){
+            if(p[i]!=null){
+                Person t = p[i];
+                Employee tmp = new Employee(t.name,t.age);
+                tmp.setrole(t.role);
+                tmp.setdesignation(hm.get(t.role));
+                E[k++] = tmp;
+            }
         }
-        for(Employee e:E){
-            System.out.println("My name is:"+e.getname()+" My age is "+e.getage()
+        for(int i=0;i<E.length;i++){
+            if(E[i]!=null){
+                Employee e = E[i];
+                System.out.println("My name is:"+e.getname()+" My age is "+e.getage()
             +" I work on role addressed as "+e.Role.get(0)+" and my designation is "+e.Role.get(1));
+            }
         }
     }
     public static void main(String[] args) {
